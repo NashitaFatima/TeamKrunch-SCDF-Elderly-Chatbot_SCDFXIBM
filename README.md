@@ -48,7 +48,7 @@ The following provides a step-by-step instructions to install the required softw
 
 - Create an IBM account
 
-- Download the code from this github (Insert link to github)
+- Download the code from this github
 
 - Login to IBM account
 
