@@ -1,0 +1,455 @@
+{
+  "intents": [
+    {
+      "intent": "Fire_with_gas_leak",
+      "examples": [
+        {
+          "text": "Gas leak with fire"
+        },
+        {
+          "text": "Smell something funny"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "General_fire",
+      "examples": [
+        {
+          "text": "General fire"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "False_alarms",
+      "examples": [
+        {
+          "text": "I want to have somebody to chat with"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "Cardiac_arrest",
+      "examples": [
+        {
+          "text": "Body failure"
+        },
+        {
+          "text": "Heart pain"
+        },
+        {
+          "text": "Heart stop"
+        },
+        {
+          "text": "Chest pain"
+        },
+        {
+          "text": "No heartbeat"
+        },
+        {
+          "text": "Heart not beating"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "CFR",
+      "examples": [
+        {
+          "text": "CFR"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "Greeting",
+      "examples": [
+        {
+          "text": "Good day"
+        },
+        {
+          "text": "Hello"
+        },
+        {
+          "text": "SCDF, I need help"
+        },
+        {
+          "text": "Hi"
+        },
+        {
+          "text": "Good afternoon"
+        },
+        {
+          "text": "Good evening"
+        },
+        {
+          "text": "Good morning"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "Falls",
+      "examples": [
+        {
+          "text": "General fall"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "Question_Falls",
+      "examples": [
+        {
+          "text": "I have fallen"
+        },
+        {
+          "text": "Fall"
+        },
+        {
+          "text": "Fell"
+        },
+        {
+          "text": "Fall down"
+        },
+        {
+          "text": "I cannot get up"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "Fall_and_bleeding",
+      "examples": [
+        {
+          "text": "Blood"
+        },
+        {
+          "text": "Fall and bleeding"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "Fire_on_cooking_appliances",
+      "examples": [
+        {
+          "text": "Appliance on fire"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "Question_unattended_cooking_fires",
+      "examples": [
+        {
+          "text": "My cooking pot suddenly caught fire, what should I do?"
+        },
+        {
+          "text": "Kitchen burn"
+        },
+        {
+          "text": "Fire help"
+        },
+        {
+          "text": "Burning"
+        },
+        {
+          "text": "Smoke"
+        }
+      ],
+      "description": ""
+    }
+  ],
+  "entities": [],
+  "metadata": {
+    "api_version": {
+      "major_version": "v2",
+      "minor_version": "2018-11-08"
+    }
+  },
+  "dialog_nodes": [
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Do you smell a gas leak? (Smell of sulfur or rotten eggs). Do you hear a hissing sound or cloud near the gas line? If yes: Type “Gas leak with fire” \n\nIs your cookware/wok on fire? \nIf yes: Type “Appliance on fire” \n\nIf not, Type “General fire”"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#Question_unattended_cooking_fires",
+      "dialog_node": "node_10_1592016646647",
+      "previous_sibling": "node_9_1592017122853"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Are you bleeding?\nIf yes: Type Fall and bleeding \nIf no: Type General fall "
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#Question_Falls",
+      "dialog_node": "node_3_1592016040692",
+      "previous_sibling": "node_4_1592016006239"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "1. Put out all flames and turn off the gas stove, gas valves and regulators.\n2. Open all windows and doors to ventilate the area\n3. Keep a safe distance from the gas leak area. \n4. Do not use a naked flame. \n5. Do not turn on/off any switches or appliances. \n6. Do not use a cell phone in the vicinity.\n7. Call your authorised dealer from a safe distance to report the gas leak immediately.\n8. If you are using piped gas, call 1800-752-1800 from a safe distance. \n(SCDF emergency handbook, 2020)\n\nPLEASE DIAL FOR CFRs. Please reply with a ‘CFR’ if you do not know how to do so. "
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#Fire_with_gas_leak",
+      "dialog_node": "node_6_1592017050684",
+      "previous_sibling": "node_3_1592017016106"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Hello, nice to meet you. How can I assist you as a Watson SCDF Assistant (SCDF Elderly Chatbot)?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#Greeting",
+      "dialog_node": "node_4_1592016006239",
+      "previous_sibling": "node_3_1592016191654"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Dial xxxxxxxx (Community First Responders hotline)"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#CFR",
+      "dialog_node": "node_7_1592017159858",
+      "previous_sibling": "node_7_1592033129504"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Sorry this is the SCDF platform. Please contact 6493 6500 for FREE chatting services if you require a listening ear. Please do not misuse this service. I’ll appreciate it and hope you have a nice day ahead."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#False_alarms",
+      "dialog_node": "node_9_1592017122853",
+      "previous_sibling": "node_7_1592017159858"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "IF YOU DISCOVER A FIRE\n1. Do not panic.\n2. Alert others of the area by shouting. \n3. Evacuate the room/area and try to get everyone out of the premises without endangering yourself. \n4. If possible, close the door of the affected room to contain the fire. \n5. Dial 995 for the SCDF. \n6. Turn off gas mains if you can reach them. \n7. Activate the re alarm at the nearest manual call point. \n8. Evacuate the building in an orderly manner via the stairs; do not use the lift. \n9. Do not return to the building until the authorities announce that it is safe to do so.\n(SCDF emergency handbook, 2020)\n\nPLEASE DIAL FOR CFRs. Please reply with a ‘CFR’ if you do not know how to do so. "
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#General_fire",
+      "dialog_node": "node_6_1592016884820",
+      "previous_sibling": "node_9_1592016716748"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "1. Tap the casualty on his shoulders and shout for his attention; if the casualty is not responsive, proceed to Step 2.\n2. Ask someone nearby to dial 995 for an ambulance and another person to get the nearest available AED.\n3. If the casualty is not lying flat on his back, reposition him while supporting and turning his head, neck and body at the same time.\n4. Open the casualty’s airway by performing the head-tiltchin-lift manoeuvre as shown. This will lift the tongue off the back of the throat.\n5. Maintain an open airway for the casualty and place your ear over his mouth and nose. \nTo assess for breathing: \t\n •Look for chest rise and fall \n •Listen for air escaping when the casualty exhales \n •Feel for the flow of air from the casualty’s mouth and nose If the casualty is breathing, monitor his breathing constantly and wait for the ambulance crew to arrive. If the casualty is not breathing, proceed to Step 6 and commence chest compressions.\n6. Using your hand closer to the casualty’s feet, locate the notch as shown by tracing the lower edge of the rib cage with your middle finger. Place your index finger next to your middle finger and position the heel of the other hand on the breastbone to meet the index finger as shown.\n7. Release the two fingers and place this hand on top of the other, interlacing the fingers from both hands to secure the position. The fingers should be kept off the chest. \n(SCDF emergency handbook, 2020)\n\nPLEASE DIAL FOR CFRs. Please reply with a ‘CFR’ if you do not know how to do so. "
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#Cardiac_arrest",
+      "dialog_node": "node_9_1592016716748",
+      "previous_sibling": "node_6_1592017050684"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "If your wok or other cookware catches fire,\n1. Cover it with a wet cloth and the fire will be extinguished; do not pour water into it as the fire will spread.\n2. Turn off the gas supply immediately.\n\nPLEASE DIAL FOR CFRs. Please reply with a ‘CFR’ if you do not know how to do so. "
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#Fire_on_cooking_appliances",
+      "dialog_node": "node_3_1592017016106",
+      "previous_sibling": "node_10_1592016646647"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "1. Stay calm and take a few deep breaths.\n2. Examine yourself for injuries.\n3. If you are injured or unable to get up, try to alert someone to your predicament. While you’re waiting for help, try to keep warm and stay calm.\n4. If you are confident you haven’t broken any bones or experienced a serious injury, search for the nearest piece of sturdy furniture. (A chair would be ideal.)\n5. Slowly roll onto your side and then work to get onto your hands and knees.\n6. Crawl or drag yourself over to the piece of furniture.\n7. Get into a kneeling position and place your hands on a stable part of the piece of furniture (e.g. the seat of the chair).\n8. Choose your strongest leg and move that knee forward to place your foot on the floor. You should end up in a kneeling lunge with your hands still on the piece of furniture for support.\n9. Using your arms and legs simultaneously, push yourself up and pivot around until you’re sitting on the piece of furniture.\n10. Stay sitting until you’re confident you can move around without hurting yourself or falling again.\n11. Once you are up, notify your doctor that you’ve had a fall and keep an eye out for emerging pain or signs of injury. \n(Anne-Marie Botek, n.d.)\n\nPLEASE DIAL FOR CFRs. Please reply with a ‘CFR’ if you do not know how to do so. "
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#Falls",
+      "dialog_node": "node_3_1592016191654",
+      "previous_sibling": "node_6_1592016884820"
+    },
+    {
+      "type": "standard",
+      "title": "Anything else",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "I didn't understand. You can try rephrasing."
+              },
+              {
+                "text": "Can you reword your statement? I'm not understanding."
+              },
+              {
+                "text": "I didn't get your meaning."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "anything_else",
+      "dialog_node": "Anything else",
+      "previous_sibling": "node_3_1592016040692",
+      "disambiguation_opt_out": true
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "To stop the bleeding:\nIf there are any foreign objects (e.g. glass fragments) in the wound, do not press on the object. Avoid applying direct pressure on the object by building up\npadding around it before bandaging.\n\nIf there are no foreign objects in the wound: \n1. Elevate the injured arm or leg above the heart level. \n2. Place a sterile gauze pad over it. \n3. Apply firm direct pressure on the wound using your palm or fingers. \n4. Secure it with a bandage.\n(SCDF emergency handbook, 2020)\n\nPLEASE DIAL FOR CFRs. Please reply with a ‘CFR’ if you do not know how to do so. "
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#Fall_and_bleeding",
+      "dialog_node": "node_7_1592033129504",
+      "previous_sibling": "Welcome"
+    },
+    {
+      "type": "standard",
+      "title": "Welcome",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Hello. How can I help you?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "welcome",
+      "dialog_node": "Welcome"
+    }
+  ],
+  "counterexamples": [],
+  "system_settings": {
+    "off_topic": {
+      "enabled": true
+    },
+    "disambiguation": {
+      "prompt": "Did you mean:",
+      "enabled": true,
+      "randomize": true,
+      "max_suggestions": 5,
+      "suggestion_text_policy": "title",
+      "none_of_the_above_prompt": "None of the above"
+    },
+    "system_entities": {
+      "enabled": true
+    },
+    "human_agent_assist": {
+      "prompt": "Did you mean:"
+    },
+    "spelling_auto_correct": true
+  },
+  "learning_opt_out": false,
+  "name": "Chatbot for elderly",
+  "language": "en",
+  "description": ""
+}
